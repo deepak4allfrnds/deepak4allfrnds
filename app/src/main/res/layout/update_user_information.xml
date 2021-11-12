@@ -1,119 +1,425 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_layout" />
 
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="@dimen/dp_10">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="5dp">
+            android:layout_marginLeft="@dimen/margin_16"
+            android:layout_marginRight="@dimen/margin_16"
+            android:layout_marginBottom="@dimen/margin_16"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/account_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16">
+
+                <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                    android:id="@+id/text_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:text="Update User Profile"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/fontSize_12"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:background="@color/black" />
+
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="2dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:background="@color/black" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/user_image"
+                android:layout_width="@dimen/dp_130"
+                android:layout_height="@dimen/dp_130"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_user"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/placeholder_user" />
+
+
+                <RelativeLayout
+                    android:id="@+id/tv_change_avatar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/shape_circle_white"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/ivCamera"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_camera" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_firstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:text="* Mandatory Fields"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fontSize_12" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
+                android:id="@+id/et_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Full Name"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Email Address"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
+                android:id="@+id/et_location"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Location"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
+                android:id="@+id/et_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Mobile Number"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
+                android:id="@+id/et_Otp"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="OTP"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_gender"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Gender"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_age"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Age Group"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_education"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+
+                android:hint="Education"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_occupation"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Occupation"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_caste"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Caste"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_religion"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Religion"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_district"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="District"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_area"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Area"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
 
             <LinearLayout
-                android:id="@+id/rel_customer_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="5dp">
+                android:weightSum="2">
 
-                <LinearLayout
+                <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
+                    android:id="@+id/et_state"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_5"
+                    android:layout_height="36dp"
+                    android:layout_below="@+id/tv_firstname"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
                     android:layout_weight="1"
                     android:background="@drawable/etxt_bg"
-                    android:orientation="vertical">
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="State"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:padding="@dimen/padding_8"
+                    android:paddingLeft="@dimen/padding_16"
+                    android:singleLine="true"
+                    android:textSize="@dimen/fontSize_14" />
 
-                    <EditText
-                        android:id="@+id/edttxt_firstName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/dp_2"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:backgroundTint="@android:color/black"
-                        android:fontFamily="@font/d_din_font"
-                        android:hint="First Name"
-                        android:inputType="textPersonName"
-                        android:maxLines="1"
-                        android:padding="10dp"
-                        android:text=""
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/gray"
-                        android:textCursorDrawable="@null"
-                        android:textSize="16sp"
-                        android:typeface="sans" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
+                    android:id="@+id/et_district"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
                     android:layout_weight="1"
                     android:background="@drawable/etxt_bg"
-                    android:orientation="vertical">
-
-
-                    <EditText
-                        android:id="@+id/edttxt_lastName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-
-                        android:background="@android:color/transparent"
-                        android:backgroundTint="@android:color/black"
-                        android:fontFamily="@font/d_din_font"
-                        android:hint="Last Name"
-                        android:inputType="textPersonName"
-                        android:maxLines="1"
-                        android:padding="10dp"
-                        android:text=""
-                        android:textColor="@android:color/black"
-                        android:textColorHint="@color/gray"
-                        android:textCursorDrawable="@null"
-                        android:textSize="16sp"
-                        android:typeface="sans" />
-
-                </LinearLayout>
-
-
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="District"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:padding="@dimen/padding_8"
+                    android:paddingLeft="@dimen/padding_16"
+                    android:singleLine="true"
+                    android:textSize="@dimen/fontSize_14" />
             </LinearLayout>
 
-
-            <Button
-                android:id="@+id/btn_sign_up"
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_region"
                 android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Region"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textSize="@dimen/fontSize_14" />
+
+            <CheckBox
+                android:id="@+id/checkbox_tc"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_bg_primery"
-                android:fontFamily="@font/d_din_font"
-                android:gravity="center"
-                android:padding="10dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/padding_8"
+                android:backgroundTint="@color/black"
+                android:buttonTint="@color/red"
+                android:paddingLeft="@dimen/padding_8"
+                android:text="By clicking submit you are accepting cnx T&amp;C"
+                android:textSize="@dimen/fontSize_10"
+                android:textStyle="normal"
+                android:theme="@style/CheckboxRed" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_update"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_35"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_30"
+                android:background="@drawable/rectagle_with_black_outer"
+                android:backgroundTint="@color/red"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
                 android:text="Update"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="@dimen/fontSize_16" />
         </LinearLayout>
 
 
-    </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.bhavesh.surveyapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -9,35 +10,65 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bhavesh.surveyapp.R;
+
+import com.cnx.surveyapp.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SplashActivity  extends AppCompatActivity {
+import butterknife.ButterKnife;
+
+public class SplashActivity extends AppCompatActivity {
+    private Handler handler = new Handler();
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.splash_activity);
-sentIntent();
+        ButterKnife.bind(this);
+        sentIntent();
+
     }
 
-    private void sentIntent() {
-            TimerTask task = new TimerTask() {
-                @Override
-                public void run() {
-                    // TODO Auto-generated method stub
+    public void sentIntent() {
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
 
-                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            };
-            Timer timer = new Timer();
-            timer.schedule(task, 1000);
+//                if (SessionManager.get_check_login(prefs)) {
+//                    //  if(SessionManager.get_otp_verification(prefs).equalsIgnoreCase("OTP verified successfully.")) {
+//                    if (SessionManager.get_userType(prefs).equals("Customer")) {
+//                        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//                    } else {
+//                        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                    /*}else {
+//                        Intent intent = new Intent(SplashScreen.this, GetStartedActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }*/
+//                } else {
+//                    Intent intent = new Intent(SplashScreen.this, GetStartedActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//
+//                }
+
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, 3000);
 
 
     }

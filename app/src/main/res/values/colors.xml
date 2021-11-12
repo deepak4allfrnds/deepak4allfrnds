@@ -7,8 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#0858b7</color>
-    <color name="tool_bar_color">#0858b7</color>
+    <color name="colorPrimary">#ffdf04</color>
+    <color name="tool_bar_color">#ffdf04</color>
     <color name="skyBlueLight">#2FF4FD</color>
     <color name="gray">#D6D6D6</color>
     <color name="grayDark">#939393</color>
@@ -22,7 +22,25 @@
     <color name="green">#00DC72</color>
     <color name="pie_green">#b6092f</color>
     <color name="pie_orange">#0000f7</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="background_color">#E2E2E2</color>
+    <color name="toolbar_color">#FEFEFE</color>
 
+    <color name="google">#DA473D</color>
+    <color name="colorAccent">#ffc72a</color>
+    <color name="amount_bg">#e1f2c4</color>
+    <color name="silver_gray">#617085</color>
+    <color name="freefire_blue_breakup">#657a81</color>
+    <color name="darkgray">#4D4D4D</color>
+    <color name="lightGrey">#F3F4F8</color>
+    <color name="home_bg">#e8f1f9</color>
+    <color name="cardbg">#f0f0f0</color>
+    <color name="spinner">#fafafa</color>
+    <color name="light_red">#f55516</color>
+    <color name="skyblue">#6495ed</color>
+    <color name="review_box">#e4ebfb</color>
+    <color name="statuscolor">#3E4C75</color>
+    <color name="indicator_background_color">#BABABA</color>
     <color name="semi_black">#464646</color>
 
 </resources>

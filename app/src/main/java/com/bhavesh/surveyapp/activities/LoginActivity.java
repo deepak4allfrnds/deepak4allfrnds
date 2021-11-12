@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,6 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.bhavesh.surveyapp.R;
 import com.bhavesh.surveyapp.model.LoginResponse;
 import com.bhavesh.surveyapp.utils.Global;
 import com.bhavesh.surveyapp.utils.LoadingDialog;
@@ -37,6 +37,7 @@ import com.bhavesh.surveyapp.utils.SessionManager;
 import com.bhavesh.surveyapp.utils.Utills;
 import com.bhavesh.surveyapp.viewModel.UserAuthListener;
 import com.bhavesh.surveyapp.viewModel.UserViewModel;
+import com.cnx.surveyapp.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -57,8 +58,10 @@ public class LoginActivity extends AppCompatActivity implements UserAuthListener
     EditText edttxt_email;
     @BindView(R.id.edttxt_password)
     EditText edttxt_password;
-    @BindView(R.id.text_toolbar)
-    TextView mTitle;
+    @BindView(R.id.tv_name)
+    TextView tv_name;
+    @BindView(R.id.iv_back)
+    ImageView iv_back;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.pass_check)
@@ -69,10 +72,9 @@ public class LoginActivity extends AppCompatActivity implements UserAuthListener
     String mobile_string, password_string;
     private UserViewModel userViewModel;
     SharedPreferences prefs;
-
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         settoolbar();
@@ -183,18 +185,8 @@ public class LoginActivity extends AppCompatActivity implements UserAuthListener
 
 
     private void settoolbar() {
-        Utills.StatusBarColour(LoginActivity.this);
-        mTitle.setText("SIGN IN".toUpperCase());
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        tv_name.setText("Login");
+        iv_back.setVisibility(View.GONE);
     }
 
     private boolean validation() {
@@ -218,11 +210,13 @@ public class LoginActivity extends AppCompatActivity implements UserAuthListener
     @OnClick(R.id.btn_login)
     public void onClick(View view) {
         if (view.getId() == R.id.btn_login) {
-            if (validation()) {
-                userViewModel.hitVendorLoginApi(mobile_string, password_String, SessionManager.get_device_token(prefs), getLat, getlongs, this);
-            } else {
-                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_LONG).show();
-            }
+//            if (validation()) {
+//                userViewModel.hitVendorLoginApi(mobile_string, password_String, SessionManager.get_device_token(prefs), getLat, getlongs, this);
+//            } else {
+//                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_LONG).show();
+//            }
+            startActivity(new Intent(this, StartSurveyActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            finish();
         }
     }
 

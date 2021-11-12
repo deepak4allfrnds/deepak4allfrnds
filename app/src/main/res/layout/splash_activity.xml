@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".activities.SplashActivity">
+    android:background="@color/white"
+    tools:context="com.bhavesh.surveyapp.activities.SplashActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/logo_app"
         android:scaleType="fitXY"
         />
 

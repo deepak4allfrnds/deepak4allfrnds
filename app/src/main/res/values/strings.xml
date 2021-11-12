@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">SurveyApp</string>
+    <string name="app_name">CnxApp</string>
     <string name="loading">Loading</string>
     <string name="ok">OK</string>
+    <string name="label_camera">Camera</string>
+    <string name="label_upload_file">Gallery</string>
+    <string name="title_upload_files">Upload Files</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.bhavesh.surveyapp.utils;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.bhavesh.surveyapp.R;
+import com.cnx.surveyapp.R;
 
 import static android.content.Context.LOCATION_SERVICE;
 
@@ -27,6 +28,13 @@ public class Global {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
 
     }
+    public static ProgressDialog getProgressDialog(Context context, String msg) {
+        ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage(msg);
+        progressDialog.setCancelable(false);
+        return progressDialog;
+    }
+
     public static void msgDialog(Activity ac, String msg) {
         try {
             AlertDialog.Builder alertbox = new AlertDialog.Builder(ac);

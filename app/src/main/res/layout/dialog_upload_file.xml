@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:padding="@dimen/padding_16">
+
+        <ImageView
+            android:id="@+id/goa_icon"
+            android:layout_width="@dimen/iconSize_32"
+            android:layout_height="@dimen/iconSize_32"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="54dp"
+            android:layout_marginEnd="@dimen/margin_20"
+            android:src="@drawable/ic_upload"
+            android:backgroundTint="@color/white" />
+
+        <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+            android:id="@+id/textPopUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/goa_icon"
+            android:text="@string/title_upload_files"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fontSize_16" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/iconSize_16"
+            android:layout_height="@dimen/iconSize_16"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:src="@drawable/ic_close_white"
+            android:backgroundTint="@color/white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/top"
+        android:gravity="center"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/iconSize_32"
+                android:layout_height="@dimen/iconSize_32"
+                android:src="@drawable/camera" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_4"
+                android:text="@string/label_camera"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/attach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/iconSize_32"
+                android:layout_height="@dimen/iconSize_32"
+                android:src="@drawable/ic_attachment" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_4"
+                android:text="@string/label_upload_file"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

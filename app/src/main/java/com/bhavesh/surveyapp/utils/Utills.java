@@ -5,7 +5,7 @@ import android.os.Build;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.bhavesh.surveyapp.R;
+import com.cnx.surveyapp.R;
 
 
 public class Utills {

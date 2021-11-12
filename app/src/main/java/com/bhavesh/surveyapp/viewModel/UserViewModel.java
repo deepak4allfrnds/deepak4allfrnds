@@ -47,4 +47,15 @@ public class UserViewModel extends ViewModel {
 
 //        authListener.onSuccess(responce);
     }
+    //quiz Response
+    public void callQuizResponse(String id, String level,AuthListener authListener) {
+        authListener.onStarted();
+        Repository.getInstance().executeQuiz(id,level, authListener);
+    }
+    // quiz Result
+    public void callQuizResult(String id, String type, String totalTime,String answerlist,ResultAuthListner authListener) {
+        authListener.onStarted();
+        Repository.getInstance().executeResult(id,type,totalTime,answerlist, authListener);
+    }
+
 }

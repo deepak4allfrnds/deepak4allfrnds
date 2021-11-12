@@ -3,7 +3,7 @@ package com.bhavesh.surveyapp.utils;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import com.bhavesh.surveyapp.R;
+import com.cnx.surveyapp.R;
 
 
 public class LoadingDialog {

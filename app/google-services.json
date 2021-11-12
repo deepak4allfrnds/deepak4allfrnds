@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "513842287287",
+    "project_id": "cnxapp-ae316",
+    "storage_bucket": "cnxapp-ae316.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513842287287:android:4a53a95c430fc6340fb332",
+        "android_client_info": {
+          "package_name": "com.cnx.surveyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513842287287-3q6vlrkltelrn3jp75no5sgstleumk5g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cnx.surveyapp",
+            "certificate_hash": "26b108729e7c6b6b53d39ac526a34486114c7d42"
+          }
+        },
+        {
+          "client_id": "513842287287-ihk1bv17um3hmkri5isnsobka4fmlu1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj2L4OXMfze_RP-EzlObgXdMq7MUt1OfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513842287287-ihk1bv17um3hmkri5isnsobka4fmlu1m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

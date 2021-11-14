@@ -30,6 +30,8 @@ import com.bhavesh.surveyapp.utils.Utills;
 import com.cnx.surveyapp.R;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,6 +51,7 @@ public class StartSurveyActivity extends AppCompatActivity implements StartSurve
     StartSurveyAdapter adapter;
     @BindView(R.id.start_survey)
     Button start_survey;
+    String type = "";
     ActionBarDrawerToggle toggle;
     public static int currentPosition = -1;
 
@@ -177,6 +180,10 @@ public class StartSurveyActivity extends AppCompatActivity implements StartSurve
     @OnClick(R.id.start_survey)
     public void onClick(View view) {
         if (view.getId() == R.id.start_survey) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("Uid", "id");
+            map.put("type", "type");
+
             startActivity(new Intent(this, UpdateUserInformation.class));
 
         }
@@ -186,6 +193,11 @@ public class StartSurveyActivity extends AppCompatActivity implements StartSurve
     public void onItemClick(int position) {
         currentPosition = position;
         if (position >= 0) {
+            if (position == 0) {
+                type = "Market Survey";
+            } else {
+                type = "Election Survey";
+            }
             start_survey.setVisibility(View.VISIBLE);
         } else {
             start_survey.setVisibility(View.GONE);
@@ -199,9 +211,9 @@ public class StartSurveyActivity extends AppCompatActivity implements StartSurve
             CardView imageView = null;
             view = rv_start_survey.findViewHolderForAdapterPosition(currentPosition).itemView;
             imageView = (CardView) view.findViewById(R.id.cv_main);
-            imageView.setBackgroundResource(R.drawable.my_custom_grid);
-            orderButton.setBackgroundResource(R.drawable.bg_chip_gray);
-            orderButton.setClickable(true);
+//            imageView.setBackgroundResource(R.drawable.my_custom_grid);
+//            orderButton.setBackgroundResource(R.drawable.bg_chip_gray);
+//            orderButton.setClickable(true);
             currentPosition = -1;
         } catch (Exception ex) {
         }

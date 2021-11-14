@@ -547,8 +547,8 @@ public class UpdateUserInformation extends AppCompatActivity {
                 map.put("occupation", education_value);
                 map.put("caste", caste_value);
                 map.put("religion", religion_value);
-                map.put("state", );
-                map.put("district", password);
+                map.put("state","");
+                map.put("district", "password");
                 map.put("region", religion_value);
                 map.put("area", area_value);
 

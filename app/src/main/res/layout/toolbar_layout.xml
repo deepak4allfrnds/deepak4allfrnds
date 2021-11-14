@@ -31,7 +31,7 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:text="CnxApp"
-            android:textColor="@color/white"
+            android:textColor="#4d4d4d"
             android:textSize="@dimen/fontSize_16" />
 
 

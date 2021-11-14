@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -18,7 +19,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.text.Html;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,12 +42,11 @@ import com.bhavesh.surveyapp.utils.ImageLoaderUtils;
 import com.bhavesh.surveyapp.utils.LoadingDialog;
 import com.bhavesh.surveyapp.utils.RealPathUtils;
 import com.bhavesh.surveyapp.utils.Utills;
-import com.bhavesh.surveyapp.viewModel.UserViewModel;
 import com.cnx.surveyapp.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.makeramen.roundedimageview.RoundedImageView;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -52,6 +55,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -60,6 +64,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import timber.log.Timber;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.READ_PHONE_STATE;
 import static com.bhavesh.surveyapp.utils.Constant.Area.RURAL;
 import static com.bhavesh.surveyapp.utils.Constant.Area.SEMI_URBAN;
 import static com.bhavesh.surveyapp.utils.Constant.Area.URBAN;
@@ -81,6 +87,7 @@ import static com.bhavesh.surveyapp.utils.Constant.Occuptant.GOVT;
 import static com.bhavesh.surveyapp.utils.Constant.Occuptant.HOUSEWIFE;
 import static com.bhavesh.surveyapp.utils.Constant.Occuptant.PRIVATE;
 import static com.bhavesh.surveyapp.utils.Constant.Occuptant.SELF;
+import static com.bhavesh.surveyapp.utils.Constant.Religion.CHRISTIAN;
 import static com.bhavesh.surveyapp.utils.Constant.Religion.HINDU;
 import static com.bhavesh.surveyapp.utils.Constant.Religion.MUSLIM;
 import static com.bhavesh.surveyapp.utils.Constant.Religion.SIKH;
@@ -108,8 +115,6 @@ public class UpdateUserInformation extends AppCompatActivity {
     EditText et_Otp;
     @BindView(R.id.et_state)
     EditText et_state;
-    @BindView(R.id.et_district)
-    EditText et_district;
     @BindView(R.id.tv_gender)
     TextView tv_gender;
     @BindView(R.id.tv_age)
@@ -129,15 +134,16 @@ public class UpdateUserInformation extends AppCompatActivity {
 
 
     @BindView(R.id.iv_user)
-    RoundedImageView circleImageView;
-    private String[] valuesGender = new String[]{MALE, FEMALE};
+    CircularImageView circleImageView;
+    private String[] valuesGender = new String[]{MALE, FEMALE, OTHERS};
     private String[] valuesCaste = new String[]{SC, ST, OBC, GENERAL, OTHERS};
     private String[] valuesAge = new String[]{ABOVE_18, ABOVE_25, ABOVE_40, ABOVE_60};
-    private String[] valuesReligion = new String[]{HINDU, MUSLIM, SIKH, OTHERS};
+    private String[] valuesReligion = new String[]{HINDU, MUSLIM, SIKH, CHRISTIAN, OTHERS};
     private String[] valuesArea = new String[]{RURAL, URBAN, SEMI_URBAN};
     private String[] valuesEducation = new String[]{MASTER, POST_GRADUATE, GRADUATE, EDU_12, EDU_10, EDU_8, ILLETRATE};
-    private String[] valuesEmployed = new String[]{PRIVATE, GOVT, SELF, HOUSEWIFE};
+    private String[] valuesEmployed = new String[]{PRIVATE, GOVT, SELF, HOUSEWIFE, OTHERS};
     private Dialog myDialog;
+    private static final int PERMISSION_REQUEST_CODE = 200;
     private static final int REQUEST_CAMERA = 1;
     private static final int RESULT_LOAD = 2;
     private static final int REQUEST_STORAGE_PERMISSION = 1;
@@ -148,21 +154,23 @@ public class UpdateUserInformation extends AppCompatActivity {
     private File fileToUpload;
     private File profileCardFile;
     int requestType = 0;
-    private UserViewModel userViewModel;
     //location
     private FusedLocationProviderClient fusedLocationClient;
     LoadingDialog dialog;
     int PERMISSION_ALL = 1;
     String getLat, getlongs;
     public String gender_value, caste_value, age_value, religion_value, area_value, education_value, employed_value;
+    public String first_name, email, location, mobileNumber, otp;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_user_information);
         ButterKnife.bind(this);
         settoolbar();
         intialize();
+        getCheckLocation();
     }
 
     private void settoolbar() {
@@ -171,9 +179,9 @@ public class UpdateUserInformation extends AppCompatActivity {
     }
 
     private void intialize() {
-        userViewModel = ViewModelProviders.of(UpdateUserInformation.this).get(UserViewModel.class);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         dialog = new LoadingDialog(this);
+        mCheckPermission();
         tv_gender.setOnClickListener(v -> {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setTitle("Select Gender:");
@@ -248,6 +256,31 @@ public class UpdateUserInformation extends AppCompatActivity {
 
     }
 
+    private void mCheckPermission() {
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, READ_PHONE_STATE}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0) {
+                    boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean phoneStateAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
+                    if (locationAccepted && phoneStateAccepted) {
+                        Log.d("PERRRR", "Permission Granted, Now you can access location data and camera.");
+                        //  SharedPrefreances.setSharedPreferenceString(this, SharedPrefreances.SHOW_PERMISSION, "false");
+                    }
+                }
+
+                break;
+        }
+    }
+
     private void getCheckLocation() {
         if (checkLocation()) {
             if (!Global.GpsEnable(this)) {
@@ -272,7 +305,9 @@ public class UpdateUserInformation extends AppCompatActivity {
             String knownName = addresses.get(0).getFeatureName();
             getLat = String.valueOf(lat);
             getlongs = String.valueOf(longs);
-
+            et_location.setText(address);
+            et_state.setText(state);
+            tv_district.setText(city);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -315,19 +350,16 @@ public class UpdateUserInformation extends AppCompatActivity {
         return true;
     }
 
-    public void onRequestPermissionsResult(int requestCode, String permissions[],
-                                           int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case 1: {
-                lastLocation();
-                return;
-            }
-            default:
-                this.finish();
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkLocation();
     }
 
+    private void hideSoftKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 
     private void uploadFilesCamera(String title) {
         myDialog = new Dialog(this);
@@ -406,6 +438,7 @@ public class UpdateUserInformation extends AppCompatActivity {
                     Bitmap bitmap;
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                        saveImage2(imageUri);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -426,6 +459,7 @@ public class UpdateUserInformation extends AppCompatActivity {
                             }
                         }
                         imageUri = data.getData();
+                        saveImage2(imageUri);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -500,15 +534,49 @@ public class UpdateUserInformation extends AppCompatActivity {
         if (view.getId() == R.id.tv_change_avatar) {// showFileChooser1();
             uploadFilesCamera("Upload Profile");
         } else if (view.getId() == R.id.btn_update) {
-//            if(validation()){
-//                startActivity(new Intent(this, QuestionAnswerSurvey.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-//            }
+            if(validation()){
+                HashMap<String, String> map = new HashMap<>();
+                map.put("name", first_name);
+                map.put("email", email);
+                map.put("location", location);
+                map.put("mobile", mobileNumber);
+                map.put("otp", otp);
+                map.put("gender", gender_value);
+                map.put("age", age_value);
+                map.put("education", education_value);
+                map.put("occupation", education_value);
+                map.put("caste", caste_value);
+                map.put("religion", religion_value);
+                map.put("state", );
+                map.put("district", password);
+                map.put("region", religion_value);
+                map.put("area", area_value);
+
+                startActivity(new Intent(this, QuestionAnswerSurvey.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+            }
             startActivity(new Intent(this, QuestionAnswerSurvey.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
         }
     }
 
     private boolean validation() {
+        first_name = et_full_name.getText().toString();
+        mobileNumber = et_mobile.getText().toString();
+        otp = et_Otp.getText().toString();
+        if (first_name.equalsIgnoreCase("")) {
+            et_full_name.setError(Html.fromHtml("<font color='red'>Enter Full Name</font>"));
+            return false;
+        } else if (mobileNumber.equalsIgnoreCase("")) {
+            et_mobile.setError(Html.fromHtml("<font color='yellow'>Enter Phone Number</font>"));
+            return false;
+        }else if(!Global.checkMobile(mobileNumber)){
+            et_mobile.setError(Html.fromHtml("<font color='yellow'>Enter Valid number</font>"));
+        }else if(otp.equalsIgnoreCase("")){
+            et_Otp.setError(Html.fromHtml("<font color='yellow'>Enter Valid Otp</font>"));
+        }
+
+
         return true;
     }
 }

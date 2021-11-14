@@ -1,6 +1,4 @@
-package com.bhavesh.surveyapp.repository;
-
-import com.bhavesh.surveyapp.retrofit.WebApi;
+package com.bhavesh.surveyapp.retrofit;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +8,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiUtils {
-    public static String BASE_URL="http://65.1.89.89:3003/";
+    public static String BASE_URL="https://app.examdhamaka.online/";
     private static WebApi requestAPI;
     public static Retrofit getClient() {
         String baseUrl = BASE_URL;
@@ -33,4 +31,5 @@ public class ApiUtils {
         }
         return retrofit;
     }
+
 }

@@ -3,11 +3,14 @@ package com.bhavesh.surveyapp.utils;
 public interface Constant {
     String MALE = "MALE";
     String FEMALE = "FEMALE";
+    String AGENT_EMAIL="email";
+    String AGENT_ID="id";
 
     interface Religion {
-        String HINDU = "Hindu";
-        String MUSLIM = "Muslim";
-        String SIKH = "Sikh";
+        String HINDU = "HINDU";
+        String MUSLIM = "MUSLIM";
+        String SIKH = "SIKH";
+        String CHRISTIAN = "CHRISTIAN";
     }
 
     interface ageGroup {
@@ -18,34 +21,34 @@ public interface Constant {
     }
 
     interface Caste {
-        String SC = "Sc";
-        String ST = "St";
-        String OBC = "Obc";
-        String GENERAL = "General";
-        String OTHERS = "Others";
+        String SC = "SC";
+        String ST = "ST";
+        String OBC = "OBC";
+        String GENERAL = "GENERAL";
+        String OTHERS = "OTHERS";
     }
     interface  Area{
-        String RURAL="Rural";
-        String URBAN="Urban";
-        String SEMI_URBAN="Semi Urban";
+        String RURAL="RURAL";
+        String URBAN="URBAN";
+        String SEMI_URBAN="SEMI URBAN";
     }
     interface  Education{
-        String MASTER="Master";
-        String POST_GRADUATE="PostGraduate";
-        String GRADUATE="Graduate";
+        String MASTER="MASTER";
+        String POST_GRADUATE="POST GRADUATE";
+        String GRADUATE="GRADUATE";
         String EDU_12="12th";
         String EDU_10="10th";
         String EDU_8="8th";
-        String ILLETRATE="Illiterate";
+        String ILLETRATE="ILLITERATE";
     }
     interface Occuptant{
-        String PRIVATE="Private";
-        String GOVT="Government";
-        String SELF="Self Employed";
-        String HOUSEWIFE="HouseWife";
+        String PRIVATE="PRIVATE";
+        String GOVT="GOVERNMENT";
+        String SELF="SELF-EMPLOYED";
+        String HOUSEWIFE="HOUSEWIFE";
     }
     interface District{
-        String LOK_SABHA="Lok Sabha";
-        String VIDHAN_SABHA="Vidhan Sabha";
+        String LOK_SABHA="LOK SABHA";
+        String VIDHAN_SABHA="VIDHAN SABHA";
     }
 }

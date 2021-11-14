@@ -3,7 +3,6 @@ package com.bhavesh.surveyapp.activities;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
@@ -11,18 +10,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bhavesh.surveyapp.adapter.SurveyPagerAdapter;
 import com.bhavesh.surveyapp.model.QuizModel;
-import com.bhavesh.surveyapp.model.QuizResponse;
 import com.bhavesh.surveyapp.utils.Global;
-import com.bhavesh.surveyapp.viewModel.AuthListener;
-import com.bhavesh.surveyapp.viewModel.UserViewModel;
 import com.cnx.surveyapp.R;
 
 import java.util.ArrayList;
@@ -31,7 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class QuestionAnswerSurvey extends AppCompatActivity implements AuthListener<QuizResponse> {
+public class QuestionAnswerSurvey extends AppCompatActivity  {
     @BindView(R.id.tv_name)
     TextView tv_name;
     @BindView(R.id.iv_back)
@@ -48,7 +41,7 @@ public class QuestionAnswerSurvey extends AppCompatActivity implements AuthListe
     Button btn_next;
     @BindView(R.id.btn_submit)
     Button btn_submit;
-    private UserViewModel userViewModel;
+
     private SharedPreferences prefs;
     private ProgressDialog progress;
     SurveyPagerAdapter mPageAdapter;
@@ -71,8 +64,8 @@ public class QuestionAnswerSurvey extends AppCompatActivity implements AuthListe
 
     private void intialize() {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         progress = Global.getProgressDialog(this, "Please wait...");
+        getsurveyResponse();
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -93,23 +86,11 @@ public class QuestionAnswerSurvey extends AppCompatActivity implements AuthListe
         });
 
     }
+
     private void getsurveyResponse() {
-        userViewModel.callQuizResponse("2", "2", this);
-    }
-
-
-    @Override
-    public void onStarted() {
 
     }
 
-    @Override
-    public void onSuccess(LiveData<QuizResponse> data) {
 
-    }
 
-    @Override
-    public void onFailure(String message) {
-
-    }
 }

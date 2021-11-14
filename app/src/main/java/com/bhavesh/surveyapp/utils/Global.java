@@ -8,11 +8,16 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.provider.Settings;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
 import com.cnx.surveyapp.R;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static android.content.Context.LOCATION_SERVICE;
 
@@ -28,11 +33,43 @@ public class Global {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
 
     }
+    public static boolean isValidEmail(String email) {
+        /*String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        boolean isValid = false;
+
+        if (email.length() > 0) {
+            isValid = email.matches(emailPattern);
+        }
+        return isValid;*/
+        boolean isValid = false;
+
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
+        }
+        return isValid;
+    }
     public static ProgressDialog getProgressDialog(Context context, String msg) {
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage(msg);
         progressDialog.setCancelable(false);
         return progressDialog;
+    }
+    /* method for mobile number validation */
+    public final static Pattern MOBILE_NUMBER_PATTERN = Pattern
+            .compile("^[0-9]{10}$");
+
+    public static boolean checkMobile(String mobile) {
+        try {
+            mobile = mobile.replaceAll("[^0-9]", "");
+            return MOBILE_NUMBER_PATTERN.matcher(mobile).matches();
+        } catch (Exception exception) {
+            return false;
+        }
     }
 
     public static void msgDialog(Activity ac, String msg) {

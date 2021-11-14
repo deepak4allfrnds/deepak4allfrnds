@@ -65,7 +65,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center">
 
-                <com.makeramen.roundedimageview.RoundedImageView
+                <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/iv_user"
                     android:layout_width="110dp"
                     android:layout_height="110dp"
@@ -119,6 +119,7 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
 
@@ -138,11 +139,14 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
             <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
                 android:id="@+id/et_location"
                 android:layout_width="match_parent"
+                android:focusable="false"
+                android:clickable="false"
                 android:layout_height="36dp"
                 android:layout_below="@+id/tv_firstname"
                 android:layout_marginLeft="@dimen/dp_12"
@@ -156,6 +160,7 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
 
@@ -171,10 +176,12 @@
                 android:background="@drawable/etxt_bg"
                 android:hint="Mobile Number"
                 android:imeOptions="actionNext"
+
                 android:inputType="textCapWords"
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
             <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
@@ -193,6 +200,7 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
             <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
@@ -209,6 +217,7 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
             <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
@@ -225,6 +234,7 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
             <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
@@ -237,11 +247,12 @@
                 android:layout_marginRight="@dimen/dp_12"
                 android:layout_weight="8"
                 android:background="@drawable/etxt_bg"
-
                 android:hint="Education"
+
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
             <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
@@ -258,6 +269,7 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
             <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
@@ -274,6 +286,7 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
             <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
@@ -290,39 +303,26 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
 
-            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
-                android:id="@+id/tv_district"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_below="@+id/tv_firstname"
-                android:layout_marginLeft="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_12"
-                android:layout_weight="8"
-                android:background="@drawable/etxt_bg"
-                android:hint="District"
-                android:padding="@dimen/padding_8"
-                android:paddingLeft="@dimen/padding_16"
-                android:singleLine="true"
-                android:textSize="@dimen/fontSize_14" />
+            <!--            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView-->
+            <!--                android:id="@+id/tv_district"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="36dp"-->
+            <!--                android:layout_below="@+id/tv_firstname"-->
+            <!--                android:layout_marginLeft="@dimen/dp_12"-->
+            <!--                android:layout_marginTop="@dimen/dp_12"-->
+            <!--                android:layout_marginRight="@dimen/dp_12"-->
+            <!--                android:layout_weight="8"-->
+            <!--                android:background="@drawable/etxt_bg"-->
+            <!--                android:hint="District"-->
+            <!--                android:padding="@dimen/padding_8"-->
+            <!--                android:paddingLeft="@dimen/padding_16"-->
+            <!--                android:singleLine="true"-->
+            <!--                android:textColorHint="@color/gray"-->
+            <!--                android:textSize="@dimen/fontSize_14" />-->
 
-            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
-                android:id="@+id/tv_area"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_below="@+id/tv_firstname"
-                android:layout_marginLeft="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_12"
-                android:layout_weight="8"
-                android:background="@drawable/etxt_bg"
-                android:hint="Area"
-                android:padding="@dimen/padding_8"
-                android:paddingLeft="@dimen/padding_16"
-                android:singleLine="true"
-                android:textSize="@dimen/fontSize_14" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -348,10 +348,11 @@
                     android:padding="@dimen/padding_8"
                     android:paddingLeft="@dimen/padding_16"
                     android:singleLine="true"
+                    android:textColorHint="@color/gray"
                     android:textSize="@dimen/fontSize_14" />
 
                 <com.bhavesh.surveyapp.utils.customview.MicrosoftTaileEditTextView
-                    android:id="@+id/et_district"
+                    android:id="@+id/tv_district"
                     android:layout_width="0dp"
                     android:layout_height="36dp"
                     android:layout_marginLeft="@dimen/dp_12"
@@ -367,8 +368,10 @@
                     android:padding="@dimen/padding_8"
                     android:paddingLeft="@dimen/padding_16"
                     android:singleLine="true"
+                    android:textColorHint="@color/gray"
                     android:textSize="@dimen/fontSize_14" />
             </LinearLayout>
+
 
             <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
                 android:id="@+id/tv_region"
@@ -386,7 +389,26 @@
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:singleLine="true"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_14" />
+
+            <com.bhavesh.surveyapp.utils.customview.MicrosostTaileTextView
+                android:id="@+id/tv_area"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@+id/tv_firstname"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_weight="8"
+                android:background="@drawable/etxt_bg"
+                android:hint="Area"
+                android:padding="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_16"
+                android:singleLine="true"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/fontSize_14" />
+
 
             <CheckBox
                 android:id="@+id/checkbox_tc"
@@ -395,7 +417,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/padding_8"
                 android:backgroundTint="@color/black"
-                android:buttonTint="@color/red"
+                android:buttonTint="@color/yellow"
                 android:paddingLeft="@dimen/padding_8"
                 android:text="By clicking submit you are accepting cnx T&amp;C"
                 android:textSize="@dimen/fontSize_10"
@@ -410,12 +432,13 @@
                 android:layout_marginTop="@dimen/dp_20"
                 android:layout_marginBottom="@dimen/dp_30"
                 android:background="@drawable/rectagle_with_black_outer"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="@color/colorPrimary"
                 android:padding="@dimen/padding_8"
                 android:paddingLeft="@dimen/padding_16"
                 android:text="Update"
                 android:textAllCaps="true"
                 android:textColor="#fff"
+                android:textColorHint="@color/gray"
                 android:textSize="@dimen/fontSize_16" />
         </LinearLayout>
 

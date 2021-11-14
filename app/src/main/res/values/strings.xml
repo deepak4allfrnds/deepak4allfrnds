@@ -5,4 +5,48 @@
     <string name="label_camera">Camera</string>
     <string name="label_upload_file">Gallery</string>
     <string name="title_upload_files">Upload Files</string>
+    <string name="me_about">About Us</string>
+    <string name="about_us">CNX (Content &amp; Xpert) is a leading research consultancy formed in 2009 by Psephologist Bhawesh Jha with a shared desire to deliver game-changing research and strategic thinking. He thought of establishing his own research and survey agency when many research agencies were struggling to provide accurate data on voting trends in India. Since then there has been no looking back. We have grown every year by forging long-term partnerships based on sector expertise, integrity and creativity - we always go further to find the answers!
+
+CNX produces high quality data on voting, public opinion, and political participation to serve the research needs of news channel, news papers, social scientists, teachers, students, policy makers and journalists who want to better understand the theoretical and empirical foundations of national election outcomes.
+
+Almost 10 years after our journey began, we have not only established ourselves as India’s most promising media and stakeholder research agency but have also manage to make a foray into both print and electronic media, social research, market research and consultancy services.
+
+Today CNX has about 100 employees and handles more than 50 renowned clients, including CNN, NewsX, India News, Sahara Samay, News Express, Khabar Bharti, CNEB, PepsiCo, among others.</string>
+
+    <string name="terms_us">A. Opinion &amp; Exit Polls
+CNX has been conducting election surveys including opinion &amp; exit polls for past 10 years, the findings of which have been published in different magazines, newspapers and telecast by different news channels. CNX Exit poll provides suitable indicators about the mood of the public and make for healthy television programming and debate. The accuracy rate so far has been about 99 percent. Some major political parties have used services of CNX in devising their election strategy and distribution of tickets. CNX has conducted over 250 opinion polls for various publications &amp; TV Channels on a vast range of issues. Reputed News Channels like CNN, NewsX, India News, ABP News, Sahara Samay, Khabar Bharti, News Express, CNEB, have telecast CNX Opinion &amp; Exit polls. We also provide monthly surveys on a range of contemporary political, economic and social issues. The random location omnibus interviews a fresh sample of 10,000 respondents, in the 18+ age group every month. The surveys (weekly or monthly, as per the requirement), coupled with the vox-pops on the subject and a storyline is available every month to our subscribers, ready to be formatted into a story.
+
+B. Election Campaign Management
+To win elections, Political parties/candidates need to make connections with voters’ at the most fundamental level. We at the CNX identify the electorate, build supportive networks, develop systems and structures, and assist in administering targeted programmes and action plans that match the campaign and concerns of voters. We offer the following services to political parties/candidates:-
+
+Campaign Strategy
+Volunteer Management
+Social Media Management
+Polling Day Management
+Election Rally Management
+Celebrity Campaign
+Campaign Tracking Surveys
+Campaign Material
+C. Market Research
+As a leading market research company in India, CNX aims to provide world-class research and strategic consulting to leading corporations. We offer the following market research services:
+
+Market Research Set-up And Design
+Project Management
+Market Research Fieldwork Services
+Data Processing / Tabulations
+Analysis &amp; Interpretation Services
+Reporting
+D. Advertising
+When you need an advertising medium that’s cost – effective and long lasting, and that gives you the necessary reach and the frequency, think of CNX.
+
+Our array of services hoardings include Railway boards, Railway panels, Transfer stickers, Cinema slides, Promos, full train, Bus panels, Full Bus painting, Mobile sign truck, Kiosks, Traffic Booth, Toll Naka, Gantry, Vinyl and TV Advertising spread across the length and breadth of India will help you run targeted campaigns in consumer populated areas. And all at a fraction of cost it takes to make your presence felt in newspapers or on TV.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="menu_home">Home</string>
+    <string name="my_privacy">Help</string>
+    <string name="my_terms">Our Services</string>
+    <string name="my_logout">Logout</string>
+    <string name="app_email">info@cnxdatalab.com</string>
+    <string name="rr">&#169;  2020 CNX Datalab. All Rights Reserved.</string>
 </resources>
